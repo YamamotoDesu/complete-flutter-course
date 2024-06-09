@@ -10,7 +10,7 @@ Since Flutter 2.5, we can use the new skeleton app template when creating a new 
 
 ## Transition
 ### Default
-![2024-06-09 17 03 35](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/b4af7c61-46f6-43ab-9e5e-da36b28dd48b)
+<img width="300" alt="image" src="https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/b4af7c61-46f6-43ab-9e5e-da36b28dd48b">
 
 ```dart
 GoRoute(
@@ -19,7 +19,7 @@ GoRoute(
 ```
 
 ### Modal
-![2024-06-09 17 05 06](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/e4355527-9494-4fb3-bf36-52f6cb6beb09)
+<img width="300" alt="image" src="https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/e4355527-9494-4fb3-bf36-52f6cb6beb09">
 
 ```dart
 GoRoute(
