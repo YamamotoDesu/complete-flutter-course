@@ -29,3 +29,7 @@ GoRoute(
    fullscreenDialog: true,
    child: const ShoppingCartScreen(),
 ```
+
+## Repository Pattern
+
+![image](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/d9864c38-5fc4-4973-aa29-4de485b2e4ef)
