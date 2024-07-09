@@ -76,3 +76,44 @@ The Consumer child argument
 The Consumer widget gives us a third child argument that is used for performance optimization. Read more here.
 https://pub.dev/documentation/flutter_riverpod/latest/flutter_riverpod/Consumer-class.html
 ![image](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/b1038c79-d8c3-489f-820f-dd9f1da20d2f)
+
+## StreamProvider
+
+```dart
+class ProductsGrid extends ConsumerWidget {
+  const ProductsGrid({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productsListValue = ref.watch(productsListProvider);
+    return productsListValue.when(
+      data: (products) => products.isEmpty
+          ? Center(
+              child: Text(
+                'No products found'.hardcoded,
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+            )
+          : ProductsLayoutGrid(
+              itemCount: products.length,
+              itemBuilder: (_, index) {
+                final product = products[index];
+                return ProductCard(
+                  product: product,
+                  onPressed: () => context.goNamed(
+                    AppRoute.product.name,
+                    pathParameters: {'id': product.id},
+                  ),
+                );
+              },
+            ),
+      error: (e, st) => Center(child: ErrorMessageWidget(e.toString())),
+      loading: () => const CircularProgressIndicator(),
+    );
+  }
+}
+
+```
+
+## FutureProvider
+
