@@ -77,15 +77,26 @@ The Consumer widget gives us a third child argument that is used for performance
 https://pub.dev/documentation/flutter_riverpod/latest/flutter_riverpod/Consumer-class.html
 ![image](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/b1038c79-d8c3-489f-820f-dd9f1da20d2f)
 
-## StreamProvider
+## StreamProvider and FutureProvider
 
 ```dart
+final productsListProvider = StreamProvider<List>((ref) {
+  final productsRepository = ref.watch(productRepositoryProvider);
+  return productsRepository.watchProductsList();
+});
+
+final productsListFutureProvider = FutureProvider<List>((ref) {
+  final productsRepository = ref.watch(productRepositoryProvider);
+  return productsRepository.fetchProductsList();
+});
+
+
 class ProductsGrid extends ConsumerWidget {
   const ProductsGrid({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final productsListValue = ref.watch(productsListProvider);
+    final productsListValue = ref.watch(productsListProvider); or ref.watch(productsListFutureProvider)
     return productsListValue.when(
       data: (products) => products.isEmpty
           ? Center(
@@ -115,5 +126,4 @@ class ProductsGrid extends ConsumerWidget {
 
 ```
 
-## FutureProvider
 
