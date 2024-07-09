@@ -33,3 +33,41 @@ GoRoute(
 ## Repository Pattern
 
 ![image](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/d9864c38-5fc4-4973-aa29-4de485b2e4ef)
+
+## Reading providers with ConsumerWidget and Consumer
+Before:
+```dart
+class ProductsGrid extends ConsumerWidget {
+ 
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final productsRepository = ref.watch(productsRepositoryProvider);
+    final products = productsRepository.getProductsList();
+    return SomeWidget(products);
+  }
+}
+```
+
+Instead, if we have a StatefulWidget, we should convert it to ConsumerStatefulWidget as explained here.
+
+Alternatively, we can use Consumer:
+```dart
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({Key? key, required this.productId}) : super(key: key);
+  final String productId;
+ 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const HomeAppBar(),
+      body: Consumer(
+        builder: (context, ref, _) {
+          final productsRepository = ref.watch(productsRepositoryProvider);
+          final product = productsRepository.getProduct(productId);
+          return SomeWidget(product);
+        },
+      ),
+    );
+  }
+}
+```
