@@ -126,4 +126,30 @@ class ProductsGrid extends ConsumerWidget {
 
 ```
 
+## The family modifier
+family is a very useful modifier that lets you pass an argument at runtime when using a provider.
+```dart
 
+final productProvider =
+    StreamProvider.family<Product?, String>((ref, id) {
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.watchProduct(id);
+});
+
+class ProductScreen extends StatelessWidget {
+  const ProductScreen({Key? key, required this.productId}) : super(key: key);
+  // Passed in as an argument when navigating to this screen
+  final String productId;
+ 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: const HomeAppBar(),
+      body: Consumer(
+        builder: (context, ref, _) {
+          // pass productId as an argument when watching the provider
+          final productValue = ref.watch(productProvider(productId));
+          return productValue.when(
+            data: (product) => SomeWidget(product),
+            error: (e, st) => Center(child: ErrorMessageWidg
+```
