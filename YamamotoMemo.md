@@ -71,3 +71,7 @@ class ProductScreen extends StatelessWidget {
   }
 }
 ```
+
+The Consumer child argument
+The Consumer widget gives us a third child argument that is used for performance optimization. Read more here.
+https://pub.dev/documentation/flutter_riverpod/latest/flutter_riverpod/Consumer-class.html
