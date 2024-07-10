@@ -153,3 +153,21 @@ class ProductScreen extends StatelessWidget {
             data: (product) => SomeWidget(product),
             error: (e, st) => Center(child: ErrorMessageWidg
 ```
+
+## Caching with Timeout (Riverpod 2.0)
+
+```dart
+final productProvider =
+    StreamProvider.autoDispose.family<Product?, String>((ref, id) {
+  // keep the provider alive when it's no longer used
+  final link = ref.keepAlive();
+  // use a timer to dispose it after 10 seconds
+  final timer = Timer(const Duration(seconds: 10), () {
+    link.close();
+  });
+  // make sure the timer is cancelled when the provider state is disposed
+  ref.onDispose(() => timer.cancel());
+  final productsRepository = ref.watch(productsRepositoryProvider);
+  return productsRepository.watchProduct(id);
+});
+```
