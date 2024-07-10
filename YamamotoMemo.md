@@ -171,3 +171,6 @@ final productProvider =
   return productsRepository.watchProduct(id);
 });
 ```
+
+![image](https://github.com/YamamotoDesu/complete-flutter-course/assets/47273077/4256c07f-743c-42e1-b145-da549a51168a)
+
