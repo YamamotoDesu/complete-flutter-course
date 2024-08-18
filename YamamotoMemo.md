@@ -203,3 +203,6 @@ class AsyncValueWidget<T> extends StatelessWidget {
 }
 
 ```
+
+## Wrap Up + Exercise
+![image](https://github.com/user-attachments/assets/29a632d5-f03f-4e36-a9bf-a86ce399f63c)
